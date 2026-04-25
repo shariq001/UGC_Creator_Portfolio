@@ -41,4 +41,4 @@ To get a local copy up and running, follow these steps:
 - `public/`: Static assets, brand logos, and fallback images for the video gallery.
 
 ---
-**Developed by Muhammad Shariq**
+**Developed by [Muhammad Shariq](https://www.linkedin.com/in/muhammad---shariq)**
