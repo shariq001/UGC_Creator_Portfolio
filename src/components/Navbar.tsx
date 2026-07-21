@@ -1,133 +1,114 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
+import { Menu, X } from "lucide-react";
+import { siteConfig } from "@/config/site.config";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { Menu, X, Instagram } from "lucide-react";
 
-const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
+export default function Navbar() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: "Home", href: "/" },
-    { name: "About", href: "#about" },
-    { name: "Clips", href: "#insta-videos" },
-    { name: "Brands", href: "#brands" },
-    { name: "Contact", href: "#contact" },
-  ];
-
-  const instaLink = "https://www.instagram.com/glossy_belle_ugc/";
-
-  const toggleMenu = () => setIsOpen(!isOpen);
-  const closeMenu = () => setIsOpen(false);
-
   return (
-    <>
-      <nav
-        className={`fixed w-full z-50 transition-all duration-500 ${
-          scrolled 
-            ? "bg-gray-950/90 backdrop-blur-xl py-4 shadow-[0_8px_30px_rgb(0,0,0,0.5)] border-b border-white/5" 
-            : "bg-transparent py-8"
-        }`}
-      >
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12">
-          <div className="flex justify-between items-center">
-            <div className="flex-shrink-0">
-              <Link href="/" className="group flex items-center space-x-2">
-                <span className={`font-serif text-2xl xs:text-3xl font-black tracking-tighter transition-colors ${scrolled ? 'text-white' : 'text-gray-900'} group-hover:text-red-700`}>
-                  Glossy<span className="text-red-700">_</span>Belle
-                </span>
-              </Link>
-            </div>
-            
-            {/* Desktop Nav */}
-            <div className="hidden md:flex items-center space-x-10">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={`text-sm font-bold uppercase tracking-widest hover:text-red-700 transition-all relative group ${scrolled ? 'text-gray-300' : 'text-gray-900'}`}
-                >
-                  {link.name}
-                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-red-700 transition-all group-hover:w-full"></span>
-                </Link>
-              ))}
-              <div className={`flex items-center pl-4 border-l ${scrolled ? 'border-white/10' : 'border-gray-200'}`}>
-                <a href={instaLink} target="_blank" rel="noopener noreferrer" className={`${scrolled ? 'text-white' : 'text-gray-900'} hover:text-red-700 transition-all hover:scale-110`}>
-                  <Instagram className="w-5 h-5" />
-                </a>
-              </div>
-            </div>
+    <header 
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        isScrolled ? "bg-[var(--color-bg-primary)]/80 backdrop-blur-xl border-b border-[var(--color-border)] py-4" : "bg-transparent py-6"
+      }`}
+    >
+      <div className="content-container px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        <Link href="/" className="text-2xl font-serif text-[var(--color-text-primary)] tracking-widest uppercase">
+          {siteConfig.name}
+        </Link>
 
-            {/* Mobile menu button */}
-            <div className="md:hidden flex items-center">
-              <button
-                onClick={toggleMenu}
-                className={`p-2 focus:outline-none transition-colors ${scrolled ? 'text-white' : 'text-gray-900'} hover:text-red-700`}
-              >
-                {isOpen ? <X className="w-8 h-8" /> : <Menu className="w-8 h-8" />}
-              </button>
-            </div>
-          </div>
-        </div>
-      </nav>
-
-      {/* Backdrop for mobile menu */}
-      {isOpen && (
-        <div 
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-[60] md:hidden"
-          onClick={closeMenu}
-        />
-      )}
-
-      {/* Mobile Nav - Side Drawer (Not full screen) */}
-      <div className={`fixed top-4 right-4 bottom-4 w-64 bg-white/70 backdrop-blur-xl z-[70] transition-transform duration-500 transform ${isOpen ? 'translate-x-0' : 'translate-x-[120%]'} md:hidden rounded-[32px] border border-white/40 shadow-2xl overflow-hidden`}>
-        <div className="flex flex-col h-full p-8 relative">
-          <button 
-            onClick={closeMenu}
-            className="absolute top-6 right-6 p-2 text-gray-900 hover:text-red-700 transition-colors"
-          >
-            <X className="w-6 h-6" />
-          </button>
-
-          <div className="mt-12 flex flex-col space-y-6">
-            <p className="text-[10px] uppercase font-black tracking-[0.3em] text-gray-400 mb-2">Navigation</p>
-            {navLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                onClick={closeMenu}
-                className="text-xl font-serif font-black text-gray-900 hover:text-red-700 transition-all transform hover:translate-x-2"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </div>
-
-          <div className="mt-auto pt-8 border-t border-gray-200/50">
-            <p className="text-[10px] uppercase font-black tracking-[0.3em] text-gray-400 mb-4">Connect</p>
-            <a 
-              href={instaLink} 
-              target="_blank" 
-              rel="noopener noreferrer"
-              className="flex items-center space-x-3 text-red-700 font-bold hover:scale-105 transition-transform"
+        {/* Desktop Nav */}
+        <nav className="hidden md:flex items-center gap-10">
+          {siteConfig.nav.map((item) => (
+            <Link 
+              key={item.label} 
+              href={item.href}
+              className="text-xs uppercase tracking-widest text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] hover-underline-center"
             >
-              <Instagram className="w-6 h-6" />
-              <span className="text-sm">Instagram</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </>
-  );
-};
+              {item.label}
+            </Link>
+          ))}
+          <Link 
+            href="#contact"
+            className="px-6 py-2.5 border border-[var(--color-text-primary)] text-[var(--color-text-primary)] text-xs uppercase tracking-widest btn-fill-left"
+          >
+            Collaborate
+          </Link>
+        </nav>
 
-export default Navbar;
+        {/* Mobile Toggle */}
+        <button 
+          className="md:hidden text-[var(--color-text-primary)]"
+          onClick={() => setIsMobileMenuOpen(true)}
+          aria-label="Open Menu"
+        >
+          <Menu size={28} strokeWidth={1.5} />
+        </button>
+      </div>
+
+      {/* Mobile Drawer */}
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <>
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 bg-black/30 z-40 md:hidden backdrop-blur-sm"
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+            <motion.div 
+              initial={{ x: "100%" }}
+              animate={{ x: 0 }}
+              exit={{ x: "100%" }}
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}
+              className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-[var(--color-bg-primary)] border-l border-[var(--color-border)] z-50 p-6 flex flex-col shadow-2xl md:hidden"
+            >
+              <div className="flex justify-end mb-12">
+                <button 
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+                  aria-label="Close Menu"
+                >
+                  <X size={28} strokeWidth={1.5} />
+                </button>
+              </div>
+              
+              <nav className="flex flex-col gap-8">
+                {siteConfig.nav.map((item) => (
+                  <Link 
+                    key={item.label} 
+                    href={item.href}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                    className="text-sm uppercase tracking-widest text-[var(--color-text-secondary)] hover:text-[var(--color-text-primary)] transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+                <Link 
+                  href="#contact"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="mt-8 px-6 py-4 border border-[var(--color-text-primary)] text-[var(--color-text-primary)] text-center text-xs uppercase tracking-widest btn-fill-left"
+                >
+                  Collaborate
+                </Link>
+              </nav>
+            </motion.div>
+          </>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}

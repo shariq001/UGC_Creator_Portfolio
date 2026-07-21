@@ -1,74 +1,97 @@
 "use client";
 
-import React from "react";
-import { Camera, MessageSquare, Video, ShieldCheck } from "lucide-react";
+import { motion } from "framer-motion";
+import { specializations } from "@/config/data/specializations";
+import { useState } from "react";
 
-const Services = () => {
-  const services = [
-    {
-      title: "Honest Reviews",
-      description: "Building brand trust through genuine, unfiltered product experiences that resonate with customers.",
-      icon: <ShieldCheck className="w-10 h-10" />,
-    },
-    {
-      title: "Aesthetic Shoots",
-      description: "High-end visual content that captures the beauty and essence of your products in every frame.",
-      icon: <Camera className="w-10 h-10" />,
-    },
-    {
-      title: "Storytelling",
-      description: "Compelling narratives that turn casual viewers into loyal brand advocates and customers.",
-      icon: <MessageSquare className="w-10 h-10" />,
-    },
-    {
-      title: "Viral Reels",
-      description: "Short-form video optimized for social algorithms to maximize your brand reach and awareness.",
-      icon: <Video className="w-10 h-10" />,
-    },
-  ];
-
+export default function Services() {
   return (
-    <section id="services" className="py-32 bg-[#030712] relative overflow-hidden">
-      {/* Decorative Blob */}
-      <div className="absolute top-0 left-0 w-64 h-64 bg-pink-900/10 rounded-full -translate-x-1/2 -translate-y-1/2 blur-3xl" />
-      
-      <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-12 relative z-10">
-        <div className="text-center space-y-6 mb-24">
-          <h2 className="text-4xl md:text-6xl font-serif font-black text-gray-900 leading-tight">
-            My <span className="text-red-800 italic">Specializations</span>
-          </h2>
-          <div className="w-24 h-1.5 bg-red-900 rounded-full mx-auto" />
-          <p className="text-gray-400 max-w-2xl mx-auto font-medium text-lg leading-relaxed">
-            Crafting premium UGC content tailored for beauty, health, and lifestyle sectors.
+    <section id="specializations" className="py-32 bg-[var(--color-bg-secondary)] relative border-t border-[var(--color-border)]">
+      <div className="content-container px-4 sm:px-6 lg:px-8">
+        <div className="flex flex-col md:flex-row md:items-end justify-between mb-20 gap-8">
+          <div>
+            <h2 className="text-sm uppercase tracking-[0.3em] text-[var(--color-text-secondary)] mb-4">Expertise</h2>
+            <h3 className="text-4xl md:text-5xl font-serif text-[var(--color-text-primary)]">
+              Specialized <span className="italic text-[var(--color-accent)]">Formats</span>
+            </h3>
+          </div>
+          <p className="text-[var(--color-text-secondary)] max-w-md font-light text-balance">
+            Delivering high-converting content formats tailored specifically to your brand's architecture and audience.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
-          {services.map((service, index) => (
-            <div
-              key={index}
-              className="bg-gray-900/50 p-10 rounded-[48px] border border-red-900/20 hover:bg-red-900/40 hover:shadow-2xl hover:shadow-red-900/20 hover:-translate-y-3 transition-all duration-500 group relative overflow-hidden"
-            >
-              <div className="absolute top-0 right-0 w-32 h-32 bg-white/5 rounded-full translate-x-1/2 -translate-y-1/2 group-hover:scale-150 transition-transform duration-700" />
-              
-              <div className="mb-8 p-5 bg-gray-800 rounded-3xl w-fit shadow-sm group-hover:bg-red-700 group-hover:rotate-[360deg] transition-all duration-700">
-                <div className="text-red-600 group-hover:text-white transition-colors duration-700">
-                  {service.icon}
-                </div>
-              </div>
-              
-              <h3 className="text-2xl font-serif font-black text-white mb-4">
-                {service.title}
-              </h3>
-              <p className="text-gray-400 font-medium leading-relaxed group-hover:text-gray-200 transition-colors">
-                {service.description}
-              </p>
-            </div>
-          ))}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {specializations.map((spec, idx) => {
+            const Icon = spec.icon;
+            return (
+              <InteractiveCard key={spec.id} spec={spec} idx={idx} Icon={Icon} />
+            );
+          })}
         </div>
       </div>
     </section>
   );
-};
+}
 
-export default Services;
+function InteractiveCard({ spec, idx, Icon }: { spec: any, idx: number, Icon: any }) {
+  const [isHovered, setIsHovered] = useState(false);
+
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 30 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      transition={{ delay: idx * 0.1, duration: 0.6 }}
+      onMouseEnter={() => setIsHovered(true)}
+      onMouseLeave={() => setIsHovered(false)}
+      className="relative p-10 flex flex-col h-full bg-white border border-[var(--color-border)] shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden cursor-pointer"
+    >
+      {/* Interactive Background Fill */}
+      <motion.div 
+        className="absolute inset-0 bg-[var(--color-accent)] opacity-0 origin-bottom"
+        animate={{ 
+          opacity: isHovered ? 1 : 0,
+          scaleY: isHovered ? 1 : 0
+        }}
+        transition={{ duration: 0.4, ease: "easeInOut" }}
+      />
+      
+      <div className="relative z-10 flex flex-col h-full">
+        <motion.div 
+          className="mb-8"
+          animate={{
+            color: isHovered ? "#ffffff" : "var(--color-text-tertiary)",
+            scale: isHovered ? 1.2 : 1,
+            x: isHovered ? 10 : 0
+          }}
+          transition={{ duration: 0.3 }}
+        >
+          <Icon size={32} strokeWidth={1} />
+        </motion.div>
+        
+        <motion.h4 
+          className="text-xl font-serif mb-4"
+          animate={{ color: isHovered ? "#ffffff" : "var(--color-text-primary)" }}
+        >
+          {spec.title}
+        </motion.h4>
+        
+        <motion.p 
+          className="font-light leading-relaxed flex-grow text-sm"
+          animate={{ color: isHovered ? "#ffffff" : "var(--color-text-secondary)" }}
+        >
+          {spec.description}
+        </motion.p>
+        
+        <motion.div 
+          className="mt-8 h-px bg-[var(--color-border)]"
+          animate={{ 
+            width: isHovered ? "100%" : "2rem",
+            backgroundColor: isHovered ? "rgba(255,255,255,0.5)" : "var(--color-border)"
+          }}
+          transition={{ duration: 0.4 }}
+        />
+      </div>
+    </motion.div>
+  );
+}

@@ -1,0 +1,17 @@
+export const brands = [
+  { name: "a1nity.pk", instagram: "https://www.instagram.com/a1nity.pk/" },
+  { name: "fegplus", instagram: "https://www.instagram.com/fegpluspk/" },
+  { name: "maybelline.pk", instagram: "https://www.instagram.com/maybelline_pk/" },
+  { name: "we.and.the.moon", instagram: "https://www.instagram.com/we.and.the.moon/" },
+  { name: "meezoorganics", instagram: "https://www.instagram.com/meezoorganics_official/" },
+  { name: "rivajmahal", instagram: "https://www.instagram.com/rivaajmahal/" },
+  { name: "xainfoods", instagram: "https://www.instagram.com/xainfoods/" },
+  { name: "rameennaturalsofficial", instagram: "https://www.instagram.com/rameennaturalsofficial/" },
+  { name: "tuffyorganics", instagram: "https://www.instagram.com/tuffyorganics/" },
+  { name: "revival.healthcare", instagram: "https://www.instagram.com/revival.healthcare/" },
+  { name: "tajherbal.pk", instagram: "https://www.instagram.com/tajherbal.pk/" },
+  { name: "eliteglowhub.pk", instagram: "https://www.instagram.com/eliteglowhub.pk/" },
+  { name: "hairties.pk", instagram: "https://www.instagram.com/hairties.pk/" },
+  { name: "c99_official", instagram: "https://www.instagram.com/c99_official/" },
+  { name: "adiva.pk", instagram: "https://www.instagram.com/adiva.pk/" },
+];

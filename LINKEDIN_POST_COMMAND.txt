@@ -1,0 +1,50 @@
+## CONTEXT
+Task: Create a professional LinkedIn post for Muhammad Shariq's profile regarding the "Glossy Belle - UGC Creator Portfolio" project.
+
+## PROJECT DETAILS
+- **Project Name**: Glossy Belle - UGC Creator Portfolio
+- **Type**: High-converting portfolio website for UGC (User Generated Content) creators.
+- **Instagram Page Link**: https://www.instagram.com/glossy_belle_ugc/
+- **Tech Stack**: Next.js 15 (App Router), TypeScript, Tailwind CSS, Lucide React.
+- **Key Features**: 
+    - Dynamic Video Showcase (Instagram Reels gallery).
+    - Brand Showcase section for collaborations.
+    - Professional Service breakdown.
+    - Performance-optimized with modern UI/UX (Glossy/Vibrant aesthetic).
+- **GitHub URL**:https://github.com/shariq001/UGC_Creator_Portfolio.git
+- ""Live URL"": https://ugc-creator-portfolio.vercel.app/
+## POST REQUIREMENTS
+- **Tone**: Professional, confident, and achievement-oriented.
+- **SEO Optimization**: Use keywords like "UGC", "Next.js 15", "Web Development", "Content Creator Portfolio", "Frontend Engineering".
+- **Visuals**: Suggest a clean screenshot of the portfolio or a demo video.
+- **Emojis**: Use only professional ones. Avoid excessive or unprofessional icons.
+- **Structure**:
+    1. Hook: Problem/Solution in the UGC space.
+    2. Implementation: Details about the tech stack.
+    3. Features: What makes this portfolio unique.
+    4. Call to Action: Invite feedback or collaborations.
+    5. Hashtags: Relevant industry tags.
+
+---
+
+## SUGGESTED POST CONTENT (TO BE PUBLISHED)
+
+✨ Thrilled to announce the completion of my latest project: Glossy Belle - A premium UGC Creator Portfolio.
+
+In the fast-paced world of User Generated Content, a creator's portfolio is their most vital asset. I designed and developed this high-converting platform to bridge the gap between creative talent and brand collaborations.
+
+Technical Highlights:
+- Framework: Next.js 15 (App Router) for cutting-edge performance.
+- Styling: Tailwind CSS for a sophisticated, "Glossy" aesthetic.
+- Language: TypeScript ensuring robust, scalable code.
+- Features: Integrated dynamic Instagram Reels gallery, optimized brand showcases, and a seamless responsive UI.
+
+The platform is specifically tailored for the @glossy_belle_ugc Instagram page, focusing on authenticity and aesthetic excellence to drive conversions.
+
+ Developing this project allowed me to explore the latest features of Next.js 15 and refine the user experience for content creators who need speed and visual impact.
+
+Check out the inspiration behind the project here: https://www.instagram.com/glossy_belle_ugc/
+
+I'm open to feedback and looking forward to connecting with fellow developers and creators in the space!
+
+#UGC #NextJS #WebDevelopment #TypeScript #TailwindCSS #FrontendDeveloper #ContentCreation #PortfolioDesign #SoftwareEngineering #NextJS15
