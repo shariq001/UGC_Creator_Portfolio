@@ -14,4 +14,10 @@ export const brands = [
   { name: "hairties.pk", instagram: "https://www.instagram.com/hairties.pk/" },
   { name: "c99_official", instagram: "https://www.instagram.com/c99_official/" },
   { name: "adiva.pk", instagram: "https://www.instagram.com/adiva.pk/" },
+  { name: "awamimarket.pk", instagram: "https://www.instagram.com/awamimarket.pk?igsh=MXZtaDI3dzdwNGQzdw==" },
+  { name: "mak_foods_pakistan", instagram: "https://www.instagram.com/mak_foods_pakistan?igsh=MWF0em5yazBnNTAxcg==" },
+  { name: "tibenabvi.shop", instagram: "https://www.instagram.com/tibenabvi.shop?igsh=bm5uZjI2cDRpb3g=" },
+  { name: "glowbags.pk", instagram: "https://www.instagram.com/glowbags.pk?igsh=MTd1NjFwcnRnNTF4bg==" },
+  { name: "instacleanpro", instagram: "https://www.instagram.com/instacleanpro?igsh=MW5oZzR3OHRrZXZoMA==" },
+  { name: "hijabigrip", instagram: "https://www.instagram.com/hijabgrip?igsh=MXZyamQ0N2JsYnZ5aw==" },
 ];
