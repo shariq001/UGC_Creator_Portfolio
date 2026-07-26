@@ -21,7 +21,7 @@ export default function Navbar() {
   return (
     <header 
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? "bg-[var(--color-bg-primary)]/80 backdrop-blur-xl border-b border-[var(--color-border)] py-4" : "bg-transparent py-6"
+        isScrolled ? "bg-[var(--color-bg-primary)] border-b border-[var(--color-border)] py-4" : "bg-transparent py-6"
       }`}
     >
       <div className="content-container px-4 sm:px-6 lg:px-8 flex items-center justify-between">
@@ -66,7 +66,7 @@ export default function Navbar() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/30 z-40 md:hidden backdrop-blur-sm"
+              className="fixed inset-0 bg-[var(--color-bg-primary)] z-40 md:hidden"
               onClick={() => setIsMobileMenuOpen(false)}
             />
             <motion.div 
@@ -74,7 +74,7 @@ export default function Navbar() {
               animate={{ x: 0 }}
               exit={{ x: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="fixed top-0 right-0 bottom-0 w-4/5 max-w-sm bg-[var(--color-bg-primary)] border-l border-[var(--color-border)] z-50 p-6 flex flex-col shadow-2xl md:hidden"
+              className="fixed top-0 right-0 bottom-0 w-full bg-[var(--color-bg-primary)] border-l border-[var(--color-border)] z-50 p-6 flex flex-col shadow-2xl md:hidden"
             >
               <div className="flex justify-end mb-12">
                 <button 
