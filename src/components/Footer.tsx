@@ -177,7 +177,7 @@ export default function Footer() {
               </div>
               
               <a 
-                href="https://devthemes.etsy.com" 
+                href="https://www.etsy.com/listing/4544041160/ugc-creator-portfolio-template-zero-code" 
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full py-5 bg-[var(--color-text-primary)] text-[var(--color-bg-primary)] text-xs uppercase tracking-widest font-medium hover:bg-[var(--color-accent)] transition-all duration-300 shadow-lg hover:shadow-xl"
